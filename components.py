@@ -27,14 +27,20 @@ class Components:
         self.state = ""
         self.get_location(city, state)
 
-        # Store link of city of property
-        self.properties = f"https://www.zillow.com/homes/{city},-{state}_rb/"
-        self.get_properties()
+        try:
+            # Store link of city of property
+            self.properties = f"https://www.zillow.com/homes/{city},-{state}_rb/"
+            self.get_properties()
+        except:
+            print("Invalid driver path or Chrome Driver version!")
 
-        # Enter data
-        self.driver = webdriver.Chrome(executable_path=chrome_driver_path)
-        self.enter_data()
-        self.save_data()
+        try:
+            # Enter data
+            self.driver = webdriver.Chrome(executable_path=chrome_driver_path)
+            self.enter_data()
+            self.save_data()
+        except:
+            print("Invalid ")
 
     def get_location(self, city, state):
         new_city = ""
